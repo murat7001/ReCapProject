@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -15,29 +17,57 @@ namespace Business.Concrete
             _colourDal = colourDal;
         }
 
-        public void Add(Colour colour)
+        public IResult Add(Colour colour)
         {
+            int saat = DateTime.Now.Hour;
+            if (saat >= 8 && saat <= 10)
+            {
+                return new ErrorResult(Messages.MaintenanceTime);
+            }
             _colourDal.Add(colour);
+            return new SuccessResult(Messages.ColourAdded);
         }
 
-        public void Delete(Colour colour)
+        public IResult Delete(Colour colour)
         {
+            int saat = DateTime.Now.Hour;
+            if (saat >= 8 && saat <= 10)
+            {
+                return new ErrorResult(Messages.MaintenanceTime);
+            }
             _colourDal.Delete(colour);
+            return new SuccessResult(Messages.ColourDeleted);
         }
 
-        public List<Colour> GetAll()
+        public IDataResult<List<Colour>> GetAll()
         {
-            return _colourDal.GetAll();
+            int saat = DateTime.Now.Hour;
+            if (saat >= 8 && saat <= 10)
+            {
+                return new ErrorDataResult<List<Colour>>(Messages.MaintenanceTime);
+            }
+            return new SuccessDataResult<List<Colour>>(_colourDal.GetAll(), Messages.ColoursListed);
         }
 
-        public Colour GetById(int colourId)
+        public IDataResult<Colour> GetById(int colourId)
         {
-            return _colourDal.Get(co => co.ColourId== colourId);
+            int saat = DateTime.Now.Hour;
+            if (saat >= 8 && saat <= 10)
+            {
+                return new ErrorDataResult<Colour>(Messages.MaintenanceTime);
+            }
+            return new SuccessDataResult<Colour>( _colourDal.Get(co => co.ColourId== colourId));
         }
 
-        public void Update(Colour colour)
+        public IResult Update(Colour colour)
         {
+            int saat = DateTime.Now.Hour;
+            if (saat >= 8 && saat <= 10)
+            {
+                return new ErrorResult(Messages.MaintenanceTime);
+            }
             _colourDal.Update(colour);
+            return new SuccessResult(Messages.ColourUpdated);
         }
     }
 }
