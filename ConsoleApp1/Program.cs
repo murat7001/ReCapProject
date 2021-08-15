@@ -11,7 +11,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            CarTest();
+            //CarTest();
             //AddingCarTest();
             //GetCarsByBrandIdTest();
             //GetCarByIdTest();
@@ -24,9 +24,24 @@ namespace ConsoleApp1
             //UpdatingColorTest();
             //DeletingColorTest();
             //AddingColorTest();
+            AddingUserTest();
         }
 
 
+
+        private static void AddingUserTest()
+        {
+            UserManager userManager = new UserManager(new EFUserDal());
+            var result = userManager.Add(new User { FirstName = "Ahmet", LastName = "Y", Email = "A@A", Password = "123456" });
+            if (result.Success == true)
+            {
+                Console.WriteLine(result.Message);
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+        }
 
         private static void CarTest()
         {
