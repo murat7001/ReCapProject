@@ -21,7 +21,7 @@ namespace Business.Concrete
         public IResult Add(Brand brand)
         {
             int saat = DateTime.Now.Hour;
-            if (saat >= 8 && saat <= 10)
+            if (saat < 8 || saat > 17)
             {
                 return new ErrorResult(Messages.MaintenanceTime);
             }
@@ -32,7 +32,7 @@ namespace Business.Concrete
         public IResult Delete(Brand brand)
         {
             int saat = DateTime.Now.Hour;
-            if (saat >= 8 && saat <= 10)
+            if (saat < 8 || saat > 17)
             {
                 return new ErrorResult(Messages.MaintenanceTime);
             }
@@ -43,7 +43,7 @@ namespace Business.Concrete
         public IDataResult<List<Brand>> GetAll()
         {
             int saat = DateTime.Now.Hour;
-            if (saat >= 8 && saat <= 10)
+            if (saat < 8 || saat > 17)
             {
                 return new ErrorDataResult<List<Brand>>(Messages.MaintenanceTime);
             }
@@ -53,7 +53,7 @@ namespace Business.Concrete
         public IDataResult<Brand> GetById(int brandId)
         {
             int saat = DateTime.Now.Hour;
-            if (saat>= 8 && saat>= 10)
+            if (saat < 8 || saat > 17)
             {
                 return new ErrorDataResult<Brand>(Messages.MaintenanceTime);
             }
@@ -63,7 +63,7 @@ namespace Business.Concrete
         public IResult Update(Brand brand)
         {
             int saat = DateTime.Now.Hour;
-            if (saat >= 8 && saat <= 10)
+            if (saat < 8 || saat > 17)
             {
                 return new ErrorResult(Messages.MaintenanceTime);
             }

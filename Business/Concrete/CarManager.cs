@@ -22,7 +22,7 @@ namespace Business.Concrete
         public IResult Add(Car car)
         {
             int saat = DateTime.Now.Hour;
-            if ( saat >= 8 && saat <= 10)
+            if (saat < 8 || saat > 17)
             {
                 return new ErrorResult(Messages.MaintenanceTime);
             }
@@ -33,7 +33,7 @@ namespace Business.Concrete
         public IResult Delete(Car car)
         {
             int saat = DateTime.Now.Hour;
-            if (saat >= 8 && saat <= 10) 
+            if (saat < 8 || saat > 17)
             {
                 return new ErrorResult(Messages.MaintenanceTime);
             }
@@ -44,7 +44,7 @@ namespace Business.Concrete
         public IDataResult<List<Car>> GetAll()
         {
             int saat = DateTime.Now.Hour;
-            if (saat >= 8 && saat <= 17)
+            if (saat < 8 || saat > 17)
             {
                 return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime); 
             }
@@ -54,7 +54,7 @@ namespace Business.Concrete
         public IDataResult<Car> GetById(int carId)
         {
             int saat = DateTime.Now.Hour;
-            if (saat >= 8 && saat <= 10)
+            if (saat < 8 || saat > 17)
             {
                 return new ErrorDataResult<Car>(Messages.MaintenanceTime);
             }
@@ -64,7 +64,7 @@ namespace Business.Concrete
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
             int saat = DateTime.Now.Hour;
-            if (saat >= 8 && saat <= 10)
+            if (saat < 8 || saat > 17)
             {
                 return new ErrorDataResult<List<CarDetailDto>>(Messages.MaintenanceTime);
             }
@@ -74,7 +74,7 @@ namespace Business.Concrete
         public IDataResult<List<Car>> GetCarsByBrandId(int id)
         {
             int saat = DateTime.Now.Hour;
-            if (saat >= 8 && saat <= 10)
+            if (saat < 8 || saat > 17)
             {
                 return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
             }
@@ -84,7 +84,7 @@ namespace Business.Concrete
         public IDataResult<List<Car>> GetCarsByColorId(int id)
         {
             int saat = DateTime.Now.Hour;
-            if (saat >= 8 && saat <= 10)
+            if (saat < 8 || saat > 17)
             {
                 return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
             }
@@ -94,7 +94,7 @@ namespace Business.Concrete
         public IResult Update(Car car)
         {
             int saat = DateTime.Now.Hour;
-            if (saat >= 8 && saat <= 10)
+            if (saat < 8 || saat > 17)
             {
                 return new ErrorResult(Messages.MaintenanceTime);
             }

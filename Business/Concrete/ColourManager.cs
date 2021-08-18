@@ -20,7 +20,7 @@ namespace Business.Concrete
         public IResult Add(Colour colour)
         {
             int saat = DateTime.Now.Hour;
-            if (saat >= 8 && saat <= 10)
+            if (saat < 8 || saat > 17)
             {
                 return new ErrorResult(Messages.MaintenanceTime);
             }
@@ -31,7 +31,7 @@ namespace Business.Concrete
         public IResult Delete(Colour colour)
         {
             int saat = DateTime.Now.Hour;
-            if (saat >= 8 && saat <= 10)
+            if (saat < 8 || saat > 17)
             {
                 return new ErrorResult(Messages.MaintenanceTime);
             }
@@ -42,7 +42,7 @@ namespace Business.Concrete
         public IDataResult<List<Colour>> GetAll()
         {
             int saat = DateTime.Now.Hour;
-            if (saat >= 8 && saat <= 10)
+            if (saat < 8 || saat > 17)
             {
                 return new ErrorDataResult<List<Colour>>(Messages.MaintenanceTime);
             }
@@ -52,7 +52,7 @@ namespace Business.Concrete
         public IDataResult<Colour> GetById(int colourId)
         {
             int saat = DateTime.Now.Hour;
-            if (saat >= 8 && saat <= 10)
+            if (saat < 8 || saat > 17)
             {
                 return new ErrorDataResult<Colour>(Messages.MaintenanceTime);
             }
@@ -62,7 +62,7 @@ namespace Business.Concrete
         public IResult Update(Colour colour)
         {
             int saat = DateTime.Now.Hour;
-            if (saat >= 8 && saat <= 10)
+            if (saat < 8 || saat > 17)
             {
                 return new ErrorResult(Messages.MaintenanceTime);
             }
